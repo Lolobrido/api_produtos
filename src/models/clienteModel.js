@@ -1,5 +1,6 @@
 // Importar o pool de conexões do PostgreSQL
 const pool = require('../config/database');
+const { buscarPorNome } = require('../controllers/clienteController');
 
 // ============================================================
 // FUNÇÃO: listarTodos
@@ -19,12 +20,12 @@ async function listarTodos() {
 }
 
 // ============================================================
-// FUNÇÃO: buscarPorId
+// FUNÇÃO: buscarPorNome
 // DESCRIÇÃO: Busca um cliente específico
 // PARÂMETRO: id (número)
 // RETORNO: Promise com o cliente ou undefined
 // ============================================================
-async function buscarPorId(id) {
+async function buscarPorNome(id) {
   // PostgreSQL usa $1, $2, $3... como placeholders
   // (SQLite usava ? ? ?)
   const result = await pool.query(
@@ -111,7 +112,7 @@ async function deletar(id) {
 // ============================================================
 module.exports = {
   listarTodos,
-  buscarPorId,
+  buscarPorNome,
   criar,
   atualizar,
   deletar

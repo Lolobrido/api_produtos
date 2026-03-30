@@ -19,10 +19,10 @@ async function listarTodos(req, res) {
 }
 
 // ============================================================
-// FUNÇÃO: buscarPorId (ASSÍNCRONA)
+// FUNÇÃO: buscarPorNome (ASSÍNCRONA)
 // ROTA: GET /clientes/:id
 // ============================================================
-async function buscarPorId(req, res) {
+async function buscarPorNome(req, res) {
   try {
     const id = parseInt(req.params.id);
     
@@ -32,7 +32,7 @@ async function buscarPorId(req, res) {
       });
     }
     
-    const cliente = await clienteModel.buscarPorId(id);
+    const cliente = await clienteModel.buscarPorNome(id);
     
     if (cliente) {
       res.status(200).json(cliente);
@@ -169,7 +169,7 @@ async function deletar(req, res) {
 // ============================================================
 module.exports = {
   listarTodos,
-  buscarPorId,
+  buscarPorNome,
   criar,
   atualizar,
   deletar
